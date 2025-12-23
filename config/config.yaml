@@ -1,0 +1,25 @@
+app:
+  env: dev
+
+rate_limiter:
+  default:
+    type: token_bucket   # noop | fixed_window | token_bucket | leaky_bucket
+
+    token_bucket:
+      capacity: 10
+      refill_rate: 5.0   # tokens per second
+
+    fixed_window:
+      limit: 10
+      window_ms: 1000
+
+    leaky_bucket:
+      capacity: 10
+      leak_rate: 5       # requests per second
+
+  rpc_limits:
+    /ratelimiter.v1.RateLimiterService/Ping:
+      type: fixed_window
+      fixed_window:
+        limit: 5
+        window_ms: 1000

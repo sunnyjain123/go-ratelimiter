@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package ratelimiter.v1;
+
+option go_package = "github.com/sunnyjain123/go-ratelimiter/pkg/pb/ratelimiter/v1;ratelimiterv1";
+
+// Dummy service for now
+service RateLimiterService {
+  rpc Ping(PingRequest) returns (PingResponse);
+}
+
+message PingRequest {
+  string message = 1;
+}
+
+message PingResponse {
+  string reply = 1;
+}
